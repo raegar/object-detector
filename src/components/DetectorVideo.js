@@ -1,5 +1,6 @@
 
 import React, { Component }from 'react';
+import * as cocoSsd from '@tensorflow-models/coco-ssd';
 
 class DetectorVideo extends Component {
   // reference to both the video and canvas
@@ -9,9 +10,7 @@ class DetectorVideo extends Component {
   // we are gonna use inline style
   styles = {
     position: 'fixed',
-    /*top: 150,
-    left: 150, */
-
+    top: 250
   };
 
 
@@ -36,8 +35,8 @@ class DetectorVideo extends Component {
     ctx.textBaseline = "top";
 
     predictions.forEach(prediction => {
-      const x = prediction.bbox[0];
-      const y = prediction.bbox[1];
+      const x = prediction.bbox[0] + 30;
+      const y = prediction.bbox[1] + 50;
       const width = prediction.bbox[2];
       const height = prediction.bbox[3];
       // Draw the bounding box.
@@ -46,7 +45,11 @@ class DetectorVideo extends Component {
       ctx.strokeRect(x, y, width, height);
       // Draw the label background.
       ctx.fillStyle = "#2fff00";
-      const textWidth = ctx.measureText(prediction.class).width;
+      let classified = prediction.class;
+      if(prediction.class === "cell phone"){
+        classified = "mobile phone";
+      }
+      const textWidth = ctx.measureText(classified).width;
       const textHeight = parseInt(font, 10);
       // draw top left rectangle
       ctx.fillRect(x, y, textWidth + 10, textHeight + 10);
@@ -55,7 +58,7 @@ class DetectorVideo extends Component {
 
       // Draw the text last to ensure it's on top.
       ctx.fillStyle = "#000000";
-      ctx.fillText(prediction.class, x, y);
+      ctx.fillText(classified, x, y);
       ctx.fillText(prediction.score.toFixed(2), x, y + height - textHeight);
     });
   };

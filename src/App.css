@@ -1,13 +1,24 @@
 .App {
+  background-color: #694E6D;
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+
+}
+
+.App-subheading {
+  font-size: calc(10px + 2vmin);
+  color: white;
+
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #4E2851;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
