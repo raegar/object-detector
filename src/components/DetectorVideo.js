@@ -41,11 +41,11 @@ class DetectorVideo extends Component {
       const width = prediction.bbox[2];
       const height = prediction.bbox[3];
       // Draw the bounding box.
-      ctx.strokeStyle = "#2fff00";
+      ctx.strokeStyle = "#FCB912";
       ctx.lineWidth = 1;
       ctx.strokeRect(x, y, width, height);
       // Draw the label background.
-      ctx.fillStyle = "#2fff00";
+      ctx.fillStyle = "#FCB912";
       let classified = prediction.class;
       if(prediction.class === "cell phone"){
         classified = "mobile phone";
