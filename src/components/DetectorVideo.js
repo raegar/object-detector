@@ -1,4 +1,5 @@
 
+//Based on https://nanonets.com/blog/object-detection-tensorflow-js/
 import React, { Component }from 'react';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 
